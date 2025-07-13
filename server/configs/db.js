@@ -2,14 +2,14 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
   try {
-    mongoose.connection.on('connected', ()=> 
-      console.log('Connected to MongoDB')
-    );
+
+    mongoose.connection.on('connected', () => console.log("database connected"));
+
     await mongoose.connect(`${process.env.MONGODB_URI}/hotel-booking`)
+
   } catch (error) {
-    console.log(error);
-    process.exit(1);
+    console.log(error.message);
   }
-};
+}
 
 export default connectDB;

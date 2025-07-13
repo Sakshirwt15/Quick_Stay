@@ -1,18 +1,14 @@
-import mongoose, { Schema } from "mongoose";
-
-// To store any data in the database we will store it through models
-
+import mongoose from "mongoose";
 
 const userSchema = mongoose.Schema({
-    _id: {type: String, required : true} ,
-    username: {type: String, required : true} ,
-    email: {type: String, required : true} ,
-    image: {type: String, required : true} ,
-    role: {type: String, enum : ["user" , "hotelOwner"], default:"user"} ,
-    recentSearchedCities: [{type : String , required: true}],
-},{timestamps : true})
+  _id: { type: String, required: true },
+  username: { type: String, required: true },
+  email: { type: String, required: true },
+  image: { type: String, required: true },
+  role: { type: String, enum: ["user", "hotelOwner"], default: "user" },
+  recentSearchedCities: [{ type: String, required: true }],
 
-// Now we will Create a User Model
+}, { timestamps: true });
 
 const User = mongoose.model("User", userSchema);
 
