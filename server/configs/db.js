@@ -1,16 +1,18 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"
 
-const connectDB = async () => {
-  try {
+const connectDB = async ()=> {
+    try{
+        mongoose.connection.on('connected',()=>console.log("Database Connected")); 
+        await mongoose.connect(`${process.env.MONGODB_URI}/hotel-booking`)
+        // Here we have to provide the project's Name inplace of "hotel-booking" .
+        //  I've changed here the name from "hotel-booking" to "QuickStay-HotelBooking" 
 
-    mongoose.connection.on('connected', () => console.log("database connected"));
+    }catch(error){
+        console.log(error.message);
+        
 
-    await mongoose.connect(process.env.MONGODB_URI)
+    }
 
-
-  } catch (error) {
-    console.log(error.message);
-  }
 }
 
-export default connectDB;
+export default connectDB ;
